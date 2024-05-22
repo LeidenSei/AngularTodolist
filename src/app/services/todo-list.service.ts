@@ -45,9 +45,19 @@ export class TodoListService {
     this.todoList = this.todoList.filter(obj => obj.completed !== true);
     this.saveList();
   }
-  countCompleted(){
-    const completedTask = this.todoList.reduce((count,obj) => count + (obj.completed?1:0),0)
-    const totalTash = this.todoList.reduce((count, _)=> count+1,0);
+  getCompletedTaskCount(): number {
+    return this.todoList.reduce((count, obj) => count + (obj.completed ? 1 : 0), 0);
   }
+
+  getTotalTaskCount(): number {
+    return this.todoList.length;
+  }
+
+  getPercentageCompleted(): number {
+    const completed = this.getCompletedTaskCount();
+    const total = this.getTotalTaskCount();
+    return (completed / total) * 100;
+  }
+
 
 }

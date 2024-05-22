@@ -15,6 +15,7 @@
   border-radius: 2px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
 }
 .add_input,
 .list_content {
@@ -56,11 +57,11 @@
 }
 .list_item {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border-top: 1px solid gray;
   height: 50px;
-  width: 79%;
+  width: 100%;
 }
 .list_item {
   input[type="checkbox"] {
@@ -73,24 +74,6 @@
     background-color: white;
   }
 }
-.list_item.input_text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.text_input{
-  text-decoration: line-through;
-  color: rgb(73,156,193);
-}
-.input_text input {
-  margin-left: 3px;
-  margin-right: 7px;
-}
-.list_icon{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .list_icon button{
   border: 0px solid white;
   background-color: white;
@@ -98,17 +81,31 @@
 .list_icon i {
   color: gray;
 }
+.list_icon{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .list_icon .fa-solid:hover {
   cursor: pointer;
   color: #2596be;
 }
+/*
+
+.input_text input {
+  margin-left: 3px;
+  margin-right: 7px;
+}
+
+
+
 .contents input {
   background-color: white;
   border: 0px solid white;
 }
 .contents input:focus {
   outline: none;
-}
+} */
 /*  */
 .bottom_setting{
   margin-top: 30px;
@@ -128,8 +125,6 @@
   cursor: pointer;
   text-transform: uppercase;
 }
-
-
 .progress {
   height: 100%;
   background-color: #96e34a;

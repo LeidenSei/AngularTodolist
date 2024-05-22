@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { TodoItem } from '../interfaces/todo-item';
+import { TodoListService } from '../services/todo-list.service';
 
 @Component({
   selector: 'app-remove-checked',
@@ -7,8 +8,11 @@ import { TodoItem } from '../interfaces/todo-item';
   styleUrls: ['./remove-checked.component.css']
 })
 export class RemoveCheckedComponent {
-  @Output() removeChecked: EventEmitter<TodoItem> = new EventEmitter<TodoItem>();
-  removeCheckedCompleted(){
-    this.removeChecked.emit()
+  @Output() removeChecked = new EventEmitter<TodoItem[]>();
+  constructor(private todoListService: TodoListService) {}
+  removeItemChecked() {
+    this.todoListService.deleteAllItemComplete();
+    const updatedTodoList = this.todoListService.getToDoList() || []; // Use existing list or empty array
+    this.removeChecked.emit(updatedTodoList);
   }
 }

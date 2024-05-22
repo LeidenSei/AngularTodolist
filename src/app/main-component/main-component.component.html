@@ -2,7 +2,11 @@
     <div class="main_content" style="text-align: center;">
         <h2 style="color: rgb(86,91,98);">TODOLIST</h2>
             <app-add-list (submit)="addItem($event)"></app-add-list>
-            <app-list-component></app-list-component>
-            <app-sub-component *ngIf="todoList.length > 0"></app-sub-component>
-    </div>
+            <div class="contents">
+                <app-list-component></app-list-component>
+                <div class="bottom_setting" *ngIf="todoList.length>0">
+                    <app-progress-component></app-progress-component>
+                   <app-remove-checked (removeChecked)="onRemoveChecked($event)"></app-remove-checked>
+                <div>
+            </div>
 </div>

@@ -7,9 +7,9 @@ import { MainComponentComponent } from './main-component/main-component.componen
 import { AddListComponent } from './add-list/add-list.component';
 import { ListComponentComponent } from './list-component/list-component.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
-import { SubComponentComponent } from './sub-component/sub-component.component';
 import { RemoveCheckedComponent } from './remove-checked/remove-checked.component';
-import { ProgressColorComponent } from './progress-color/progress-color.component';
+import { ProgressComponentComponent } from './progress-component/progress-component.component';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +18,8 @@ import { ProgressColorComponent } from './progress-color/progress-color.componen
     AddListComponent,
     ListComponentComponent,
     TodoItemComponent,
-    SubComponentComponent,
     RemoveCheckedComponent,
-    ProgressColorComponent
+    ProgressComponentComponent
   ],
   imports: [
     BrowserModule,
