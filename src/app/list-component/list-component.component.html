@@ -1,5 +1,5 @@
 <div class="list_content" *ngFor="let todoItem of todoList">
     <app-todo-item [item]="todoItem"
     (remove)="removeItem($event)"
-    (update)="updateItem($event.item, $event.changes)"></app-todo-item>
+    (update)="updateItem($event.item, $event.changes)" (updateTitle)="updateItem($event.item, $event.changes)"></app-todo-item>
 </div>

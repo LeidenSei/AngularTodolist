@@ -90,23 +90,14 @@
   cursor: pointer;
   color: #2596be;
 }
-/*
-
-.input_text input {
-  margin-left: 3px;
-  margin-right: 7px;
-}
-
-
-
 .contents input {
   background-color: white;
   border: 0px solid white;
 }
 .contents input:focus {
   outline: none;
-} */
-/*  */
+}
+
 .bottom_setting{
   margin-top: 30px;
   display: flex;

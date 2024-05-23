@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoListService } from '../services/todo-list.service';
 import { TodoItem } from '../interfaces/todo-item';
 
@@ -7,14 +7,28 @@ import { TodoItem } from '../interfaces/todo-item';
   templateUrl: './progress-component.component.html',
   styleUrls: ['./progress-component.component.css']
 })
-export class ProgressComponentComponent {
+export class ProgressComponentComponent implements OnInit {
   todoList: TodoItem[];
+  taskCompleted!: number;
+  totalTask!: number;
+  percentTask!: number;
 
   constructor(private todoListService: TodoListService) {
     this.todoList = this.todoListService.getToDoList();
-    
+    this.updateStatistics();
   }
-    taskCompleted = this.todoListService.getCompletedTaskCount();
-    totalTask= this.todoListService.getTotalTaskCount();
-    percentTask= this.todoListService.getPercentageCompleted();
+
+  ngOnInit(): void {
+
+      this.todoListService.todoListChanged.subscribe(() => {
+      this.todoList = this.todoListService.getToDoList();
+      this.updateStatistics();
+    });
+  }
+
+  updateStatistics(): void {
+    this.taskCompleted = this.todoListService.getCompletedTaskCount(this.todoList);
+    this.totalTask = this.todoListService.getTotalTaskCount(this.todoList);
+    this.percentTask = this.todoListService.getPercentageCompleted(this.todoList);
+  }
 }

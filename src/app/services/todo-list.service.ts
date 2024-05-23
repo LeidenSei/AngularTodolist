@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { TodoItem } from '../interfaces/todo-item';
 import { StorageService } from './storage.service';
 
@@ -17,11 +17,13 @@ const defaultTodoList: TodoItem[]=[
 })
 export class TodoListService {
   todoList!: TodoItem[];
+  todoListChanged = new EventEmitter<void>();
   constructor(private storageService:StorageService) { 
     this.todoList=storageService.getData(todoListStorageKey)||defaultTodoList
   }
   saveList() {
     this.storageService.setData(todoListStorageKey, this.todoList);
+    this.todoListChanged.emit();
   }
 
   updateItem(item: TodoItem, changes: TodoItem) {
@@ -45,18 +47,18 @@ export class TodoListService {
     this.todoList = this.todoList.filter(obj => obj.completed !== true);
     this.saveList();
   }
-  getCompletedTaskCount(): number {
-    return this.todoList.reduce((count, obj) => count + (obj.completed ? 1 : 0), 0);
+  getCompletedTaskCount(todoList: TodoItem[]): number {
+    return todoList.reduce((count, obj) => count + (obj.completed ? 1 : 0), 0);
   }
 
-  getTotalTaskCount(): number {
-    return this.todoList.length;
+  getTotalTaskCount(todoList: TodoItem[]): number {
+    return todoList.length;
   }
 
-  getPercentageCompleted(): number {
-    const completed = this.getCompletedTaskCount();
-    const total = this.getTotalTaskCount();
-    return (completed / total) * 100;
+  getPercentageCompleted(todoList: TodoItem[]): number {
+    const completed = this.getCompletedTaskCount(todoList);
+    const total = this.getTotalTaskCount(todoList);
+    return total > 0 ? (completed / total) * 100 : 0;
   }
 
 
