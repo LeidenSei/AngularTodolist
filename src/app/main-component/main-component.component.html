@@ -1,12 +1,27 @@
 <div class="todo-app">
     <div class="main_content" style="text-align: center;">
         <h2 style="color: rgb(86,91,98);">TODOLIST</h2>
-            <app-add-list (submit)="addItem($event)"></app-add-list>
-            <div class="contents">
-                <app-list-component></app-list-component>
-                <div class="bottom_setting" *ngIf="todoList.length>0">
-                    <app-progress-component></app-progress-component>
-                   <app-remove-checked></app-remove-checked>
-                <div>
+        <ng-container *ngIf="todoList.length>5 else elseTemplate">
+            <div class="overscroll_size" style="text-align: center;">
+                <app-add-list (submit)="addItem($event)"></app-add-list>
+                <div class="contents">
+                    <app-list-component></app-list-component>
+                </div>
             </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+            <div class="" style="text-align: center;">
+                <app-add-list (submit)="addItem($event)"></app-add-list>
+                <div class="contents">
+                    <app-list-component></app-list-component>
+                </div>
+            </div>
+        </ng-template>
+
+        <div class="bottom_setting" *ngIf="todoList.length>0">
+            <app-progress-component></app-progress-component>
+            <app-remove-checked></app-remove-checked>
+        </div>
+    </div>
+
 </div>

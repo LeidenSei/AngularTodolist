@@ -12,7 +12,7 @@ import { TodoItem } from '../interfaces/todo-item';
     <input #inputElementRef style="resize:horizontal; width:500px" (keydown.enter)="changeTitle($event,inputElementRef.value)" [disabled]="!statusInput" [value]="item.title">
     </div>
     <div class="list_icon">
-      <button (click)="allowChange()"><i class="fa-solid fa-pencil"></i>
+      <button (click)="allowChange()"><i class="{{icon}}"></i>
       </button>
       <button (click)="removeItem()"><i class="fa-solid fa-x"></i></button>
     </div>
@@ -24,7 +24,7 @@ import { TodoItem } from '../interfaces/todo-item';
 export class TodoItemComponent {
   statusInput: boolean = false;
   @Output() remove: EventEmitter<TodoItem> = new EventEmitter<TodoItem>();
-
+  icon='fa-solid fa-pencil'
   removeItem() {
     this.remove.emit(this.item);
   }
@@ -50,6 +50,7 @@ export class TodoItemComponent {
   
   allowChange(){
      this.statusInput=!this.statusInput
+     this.icon='fa-solid fa-user-pen'
   }
 
   @Input()

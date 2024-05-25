@@ -9,7 +9,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class MainComponentComponent implements OnInit {
   todoList: TodoItem[];
-
+  countItem=false;
   constructor(private todoListService: TodoListService,private cdRef: ChangeDetectorRef) {
     this.todoList = this.todoListService.getToDoList();
   }
